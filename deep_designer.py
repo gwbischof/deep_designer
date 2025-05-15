@@ -10,7 +10,7 @@ from deep_designer.agents import (
     create_architect_agent,
     create_design_agent,
 )
-from deep_designer.tools import ask_questions, read_idea_file, update_design_json
+from deep_designer.tools import ask_customer, read_idea_file, update_design_json
 from deep_designer.utils import load_prompt_text
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
@@ -34,7 +34,7 @@ def create_design_document_team(debug=False):
         name="Design Document Generator",
         mode="coordinate",  # Use coordinate mode
         model=OpenAIChat("gpt-4o", temperature=0.1),
-        tools=[ask_questions, read_idea_file],  # Add custom tools
+        tools=[ask_customer, read_idea_file],  # Add custom tools
         enable_agentic_context=True,
         members=[
             marketing,

@@ -14,8 +14,8 @@ from .utils import initialize_design_json, validate_design_json, load_prompt_tex
 
 
 @tool(show_result=True)
-def ask_questions(questions: List[str], agent_name: str = "Unknown Agent") -> str:
-    """Prompts user with questions and collects responses.
+def ask_customer(questions: List[str], agent_name: str = "Unknown Agent") -> str:
+    """Prompts the customer with questions and collects responses.
 
     Args:
         questions: List of question strings to ask sequentially.
@@ -27,7 +27,7 @@ def ask_questions(questions: List[str], agent_name: str = "Unknown Agent") -> st
     Note:
         Provide only ONE question in the list.
     """
-    print(f"🛠️ [ask_questions] Called by {agent_name}")
+    print(f"🛠️ [ask_customer] Called by {agent_name}")
 
     if not questions:
         return "No questions provided."
