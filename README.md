@@ -19,7 +19,7 @@ Deep Designer uses [Agno](https://docs.agno.com/introduction) for multi-agent or
 
 ## Workflow
 
-1. System reads idea from IDEA.md
+1. Read idea from IDEA.md
 2. Agents analyze requirements through targeted questions
 3. Human provides feedback at each iteration
 4. Final document includes implementation tasks for coding agents
