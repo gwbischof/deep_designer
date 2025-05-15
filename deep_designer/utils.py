@@ -56,18 +56,17 @@ def get_prompts_dir() -> Path:
     return Path(__file__).parent / "prompts"
 
 
-def load_prompt(agent_name: str) -> Dict[str, Any]:
-    """Loads a dotprompt file for an agent and returns Agent constructor parameters.
+def load_prompt_text(agent_name: str) -> str:
+    """Loads the raw text content from an agent's prompt file.
 
     Args:
         agent_name: Name of the agent (manager, marketing, architect, designer)
 
     Returns:
-        Dictionary containing parameters directly mappable to Agent constructor
+        String containing the raw prompt text
 
     Raises:
         FileNotFoundError: If the prompt file doesn't exist
-        ValueError: If the prompt file has invalid format
     """
     prompts_dir = get_prompts_dir()
     prompt_file = prompts_dir / f"{agent_name}.prompt"
@@ -76,63 +75,9 @@ def load_prompt(agent_name: str) -> Dict[str, Any]:
         raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
 
     with open(prompt_file, "r") as f:
-        content = f.read()
+        content = f.read().strip()
 
-    # Split frontmatter from content using the standard regex pattern
-    frontmatter_match = re.match(r"^---\n(.*?)\n---\n(.*)", content, re.DOTALL)
-
-    if not frontmatter_match:
-        raise ValueError(
-            f"Invalid prompt format in {prompt_file}, expected YAML frontmatter separated by ---"
-        )
-
-    yaml_content = frontmatter_match.group(1)
-    prompt_content = frontmatter_match.group(2)
-
-    try:
-        # Parse the YAML frontmatter
-        metadata = yaml.safe_load(yaml_content)
-
-        # Process content for instructions based on agent type
-        instructions = []
-        if agent_name == "architect":
-            # For architect, keep as a single string in a list (triple-quoted format)
-            instructions = [prompt_content.strip()]
-        else:
-            # For other agents, convert to list of instructions
-            content_lines = prompt_content.split("\n")
-            for line in content_lines:
-                # Clean up the line
-                cleaned_line = line.strip()
-
-                # Skip empty lines, headings, and bullet point markers
-                if (
-                    not cleaned_line
-                    or cleaned_line.startswith("#")
-                    or cleaned_line == "-"
-                ):
-                    continue
-
-                # Remove bullet point marker if present
-                if cleaned_line.startswith("- "):
-                    cleaned_line = cleaned_line[2:]
-
-                # Add the instruction
-                if cleaned_line:
-                    instructions.append(cleaned_line)
-
-        # Map dotprompt fields to Agent constructor parameters
-        agent_params = {
-            "name": metadata.get("name", f"{agent_name.title()} Agent"),
-            "description": metadata.get("description", ""),
-            "instructions": instructions,
-            "markdown": True,
-            "add_name_to_instructions": True,
-        }
-
-        return agent_params
-    except yaml.YAMLError as e:
-        raise ValueError(f"Invalid YAML in prompt frontmatter: {e}")
+    return content
 
 
 def validate_design_json() -> Tuple[bool, Optional[str], Optional[Dict[str, Any]]]:

@@ -10,7 +10,7 @@ from pathlib import Path
 from agno.tools import tool
 
 # Import utils functions
-from .utils import initialize_design_json, validate_design_json, load_prompt
+from .utils import initialize_design_json, validate_design_json, load_prompt_text
 
 
 @tool(show_result=True)
