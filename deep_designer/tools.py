@@ -76,7 +76,7 @@ def read_idea_file(file_path: str, agent_name: str = "Unknown Agent") -> str:
 
         # Convert markdown to JSON
         json_content = markdown_to_json.jsonify(markdown_content)
-        print("IDEA file successfully loaded")
+        print("IDEA TOOL file successfully loaded")
         return json_content
     except FileNotFoundError as e:
         error_message = f"Error: {e}"

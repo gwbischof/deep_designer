@@ -9,7 +9,7 @@ def create_marketing_agent():
     """Creates marketing agent for persona development."""
     # Load prompt text directly from the prompt file
     instructions = load_prompt_text("marketing")
-    
+
     # Create agent with direct arguments
     agent = Agent(
         name="Marketing Expert",

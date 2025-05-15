@@ -33,9 +33,9 @@ def create_design_document_team(debug=False):
         debug_mode=debug,
         name="Design Document Generator",
         mode="coordinate",
-        model=OpenAIChat("gpt-4o", temperature=0.1),
+        model=OpenAIChat("o3-mini"),
         tools=[ask_customer, read_idea_file],
-        reasoning=True,
+        reasoning=False,
         enable_agentic_context=True,
         members=[
             marketing,
@@ -43,7 +43,7 @@ def create_design_document_team(debug=False):
             designer,
         ],
         instructions=[instructions],
-        success_criteria="The resulting design document has to be detailed enough that it can be fully implemented without additional information.  A complete design document has been created with marketing, architecture, and UI/UX contributions.",
+        success_criteria="The resulting design document has to be detailed enough that it can be fully implemented without additional information.  The design document must meet ALL requirements of the idea. The customer must be happy about your design and approve the work.",
         show_members_responses=True,
         show_tool_calls=True,
         markdown=True,
@@ -99,8 +99,6 @@ def main():
     team = create_design_document_team(debug=False)
 
     print("📝 Design Document Generator")
-    print("===========================")
-    print(f"Using idea file: {idea_path}")
 
     # Pass instruction to the team to use the idea file
     response = team.run("Create a design document based on the idea in IDEA.md")
