@@ -32,9 +32,10 @@ def create_design_document_team(debug=False):
     team = Team(
         debug_mode=debug,
         name="Design Document Generator",
-        mode="coordinate",  # Use coordinate mode
+        mode="coordinate",
         model=OpenAIChat("gpt-4o", temperature=0.1),
-        tools=[ask_customer, read_idea_file],  # Add custom tools
+        tools=[ask_customer, read_idea_file],
+        reasoning=True,
         enable_agentic_context=True,
         members=[
             marketing,
@@ -42,8 +43,9 @@ def create_design_document_team(debug=False):
             designer,
         ],
         instructions=[instructions],
-        success_criteria="A complete design document has been created with marketing, architecture, and UI/UX contributions, with human approval at each stage.",
+        success_criteria="The resulting design document has to be detailed enough that it can be fully implemented without additional information.  A complete design document has been created with marketing, architecture, and UI/UX contributions.",
         show_members_responses=True,
+        show_tool_calls=True,
         markdown=True,
     )
 
