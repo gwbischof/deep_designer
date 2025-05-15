@@ -33,7 +33,7 @@ def create_design_document_team(debug=False):
         debug_mode=debug,
         name="Design Document Generator",
         mode="coordinate",
-        model=OpenAIChat("o3-mini"),
+        model=OpenAIChat("gpt-4o", temperature=0.1),
         tools=[ask_customer, read_idea_file],
         reasoning=False,
         enable_agentic_context=True,

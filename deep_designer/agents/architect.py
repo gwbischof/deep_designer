@@ -9,7 +9,7 @@ def create_architect_agent():
     """Creates architect agent for technical design."""
     # Load prompt text directly from the prompt file
     instructions = load_prompt_text("architect")
-    
+
     # Create agent with direct arguments
     agent = Agent(
         name="Technical Architect",
