@@ -8,7 +8,7 @@ Note that this project is very new and needs some work to sculpt it into a usefu
 
 Deep Designer converts a human's product idea into a detailed design for use by coding agents. The system focuses on deep product design analysis and human-in-the-loop iterative refinement.
 
-Deep Designer uses [Agno](https://docs.agno.com/introduction) for multi-agent orchestration, and [dotprompt](https://google.github.io/dotprompt/) for prompt templating. Deep Designer is also model agnostic.
+Deep Designer uses [Agno](https://docs.agno.com/introduction) for multi-agent orchestration. Deep Designer is model agnostic.
 
 ## Agents
 

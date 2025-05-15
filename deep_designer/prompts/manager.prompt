@@ -1,17 +1,3 @@
----
-name: Design Document Manager
-description: Coordinate the design document creation process
-config:
-  temperature: 0.1
-input:
-  schema:
-    idea: string
-output:
-  format: json
-  schema:
-    design: json
----
-
 Transform the Customer's idea into an implementation-ready design document that satisfies them.
 
 ## Rules

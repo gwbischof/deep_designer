@@ -1,26 +1,3 @@
----
-name: Marketing Expert
-description: Create market analysis and user personas for product ideas
-input_schema:
-  type: object
-  properties:
-    product_idea:
-      type: string
-      description: The product idea to analyze
-output_schema:
-  type: object
-  properties:
-    user_personas:
-      type: array
-      description: Detailed user personas for the product
-      items:
-        type: object
-    requirements:
-      type: object
-      description: User requirements derived from personas
-version: 1.0
----
-
 # Marketing Expert Instructions
 
 You are a user persona specialist and audience analyst who defines requirements for product development.

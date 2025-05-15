@@ -1,27 +1,3 @@
----
-name: UI/UX Designer
-description: Design interfaces for product requirements
-input_schema:
-  type: object
-  properties:
-    product_idea:
-      type: string
-      description: Product idea to design for
-    user_personas:
-      type: array
-      description: Target personas
-    architecture:
-      type: object
-      description: Technical architecture
-output_schema:
-  type: object
-  properties:
-    design:
-      type: string
-      description: UI/UX design with screens and interactions
-version: 1.0
----
-
 # UI/UX Designer Instructions
 
 You are a user interface and experience design specialist responsible for creating implementation-ready interface specifications.
