@@ -10,8 +10,8 @@ from agno.models.anthropic import Claude
 from agno.utils.pprint import pprint_run_response
 from agno.tools.reasoning import ReasoningTools
 
-from deep_designer.tools import ask_customer, read_idea_file, update_design_json
-from deep_designer.utils import load_prompt_text, initialize_design_json
+from tools import ask_customer, read_idea_file, update_design_json
+from utils import load_prompt_text, initialize_design_json
 from models import CompleteDesignDocument
 
 
