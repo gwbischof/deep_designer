@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """Custom tools for Scrooge design document generator."""
-import os
-import sys
 import json
 import questionary
 import markdown_to_json
@@ -10,7 +8,7 @@ from pathlib import Path
 from agno.tools import tool
 
 # Import utils functions
-from utils import initialize_design_json, validate_design_json, load_prompt_text
+from utils import initialize_design_json, validate_design_json
 
 
 @tool(show_result=True)

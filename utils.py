@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """Utility functions for Deep Designer document generator."""
 import json
-import os
-import yaml
-import re
 from json.decoder import JSONDecodeError
-from typing import Tuple, Dict, Any, Optional, List, Union
+from typing import Tuple, Dict, Any, Optional
 from pathlib import Path
 
 

@@ -5,7 +5,6 @@ import argparse
 from pathlib import Path
 
 from agno.agent import Agent
-from agno.models.openai import OpenAIChat
 from agno.models.anthropic import Claude
 from agno.utils.pprint import pprint_run_response
 from agno.tools.reasoning import ReasoningTools
@@ -79,9 +78,6 @@ def get_default_idea_path():
 
 def main():
     """Runs design document generation from IDEA.md content using a single agent."""
-    # Parse command line arguments
-    args = parse_arguments()
-
     # Check if IDEA.md exists
     idea_path = get_default_idea_path()
     if not Path(idea_path).exists():
