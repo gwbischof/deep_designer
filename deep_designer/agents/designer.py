@@ -18,6 +18,6 @@ def create_design_agent():
         instructions=[instructions],
         markdown=True,
         add_name_to_instructions=True,
-        model=OpenAIChat(id="gpt-4o")
+        model=OpenAIChat(id="gpt-4o"),
     )
     return agent
