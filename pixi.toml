@@ -10,10 +10,7 @@ ruff = "ruff check ."
 mypy = "mypy ."
 black = "black ."
 pytest = "pytest"
-deep_designer = "python deep_designer.py"
 dd = "python deep_designer.py"
-d = "python designer.py"
-validate = "python scripts/validate_design.py"
 
 [dependencies]
 python = ">=3.13.3,<3.14"

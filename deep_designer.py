@@ -93,7 +93,6 @@ def main():
     # Run the designer agent
     response = designer.run(
         "Create a design document based on the idea in IDEA.md",
-        # stream=True,
         show_full_reasoning=True,
     )
 
