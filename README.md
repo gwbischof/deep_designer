@@ -20,6 +20,7 @@ Deep Designer uses [Agno](https://docs.agno.com/introduction) for AI agent orche
 - Improve the prompt and output models.
 - Figure out if it would be helpful to add [Memory](https://docs.agno.com/agents/memory) or [Knowledge](https://docs.agno.com/agents/knowledge) 
 - Generate tasks from the design document, similar to [taskmaster](https://github.com/eyaltoledano/claude-task-master).
+- Better docs.
 
 ## Structure
 
