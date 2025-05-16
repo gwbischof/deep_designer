@@ -51,16 +51,8 @@ def initialize_design_json() -> str:
     return str(file_path.absolute())
 
 
-def get_prompts_dir() -> Path:
-    """Returns the path to the prompts directory."""
-    return Path(__file__).parent / "prompts"
-
-
-def load_prompt_text(agent_name: str) -> str:
-    """Loads the raw text content from an agent's prompt file.
-
-    Args:
-        agent_name: Name of the agent (manager, marketing, architect, designer)
+def load_prompt_text() -> str:
+    """Loads the raw text content from the designer.prompt file.
 
     Returns:
         String containing the raw prompt text
@@ -68,8 +60,7 @@ def load_prompt_text(agent_name: str) -> str:
     Raises:
         FileNotFoundError: If the prompt file doesn't exist
     """
-    prompts_dir = get_prompts_dir()
-    prompt_file = prompts_dir / f"{agent_name}.prompt"
+    prompt_file = get_project_root() / "designer.prompt"
 
     if not prompt_file.exists():
         raise FileNotFoundError(f"Prompt file not found: {prompt_file}")

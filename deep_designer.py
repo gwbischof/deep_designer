@@ -18,7 +18,7 @@ from models import CompleteDesignDocument
 def create_designer_agent():
     """Creates a standalone designer agent for document creation."""
     # Load prompt text directly from the prompt file
-    instructions = load_prompt_text("designer")
+    instructions = load_prompt_text()
 
     # Create agent with direct arguments
     agent = Agent(
