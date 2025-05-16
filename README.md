@@ -48,3 +48,38 @@ pixi run validate
 2. Run `pixi run dd` to generate a design document
 3. Answer the agent's questions to refine the design
 4. The final design will be saved in DESIGN.json
+
+## Idea Document Schema
+```
+# Idea document
+
+## Problem
+
+- A description of the problem.
+- An example of the problem.
+
+## Solution
+
+- A high level summary of the solution to the problem.
+- A list of challenges to making this a successful product.
+- A high level description about what this product must do to overcome the challenges.
+
+## Audience
+
+- A high level description about who the target audience is.
+
+## Features
+
+- **Core features**
+    - A list of descriptions of core features.
+- **Optional features**
+    - A list of descriptions of optional features.
+
+## Business Model
+
+- A high level description of what the business model is.
+
+## Marketing
+
+- A list of marketing strategies.
+```
