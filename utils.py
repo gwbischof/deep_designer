@@ -48,26 +48,6 @@ def initialize_design_json() -> str:
     return str(file_path.absolute())
 
 
-def load_prompt_text() -> str:
-    """Loads the raw text content from the designer.prompt file.
-
-    Returns:
-        String containing the raw prompt text
-
-    Raises:
-        FileNotFoundError: If the prompt file doesn't exist
-    """
-    prompt_file = get_project_root() / "designer.prompt"
-
-    if not prompt_file.exists():
-        raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
-
-    with open(prompt_file, "r") as f:
-        content = f.read().strip()
-
-    return content
-
-
 def validate_design_json() -> Tuple[bool, Optional[str], Optional[Dict[str, Any]]]:
     """Validates that DESIGN.json exists and contains valid JSON.
 

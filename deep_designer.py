@@ -11,21 +11,28 @@ from agno.utils.pprint import pprint_run_response
 from agno.tools.reasoning import ReasoningTools
 
 from tools import ask_customer, read_idea_file, update_design_json
-from utils import load_prompt_text, initialize_design_json
+from utils import initialize_design_json
 from models import CompleteDesignDocument
+
+# Designer prompt embedded directly in the code
+DESIGNER_PROMPT = """First read the idea file with read_idea_file.
+
+Transform the Customer's idea into an implementation-ready design document that satisfies them.
+
+## Requirements
+- Make sure to use reasoning tools to validate the design.
+- You must ask the customer for feedback and approval before completing the work. All user feedback must be addressed.
+- The resulting design document has to be detailed enough that it can be fully implemented without additional information. If the design document needs more details then assign more tasks to the agents."""
 
 
 def create_designer_agent():
     """Creates a standalone designer agent for document creation."""
-    # Load prompt text directly from the prompt file
-    instructions = load_prompt_text()
-
     # Create agent with direct arguments
     agent = Agent(
         name="Designer",
         role="Design document creator",
         description="Transform product ideas into implementation-ready design documents",
-        instructions=[instructions],
+        instructions=[DESIGNER_PROMPT],
         show_tool_calls=True,
         add_name_to_instructions=True,
         model=Claude(id="claude-3-7-sonnet-latest"),
