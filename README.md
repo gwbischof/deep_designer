@@ -4,38 +4,47 @@ Transform ideas into implementation-ready design documents with human collaborat
 
 ## Overview
 
-Note that this project is very new and needs some work to sculpt it into a useful tool. Leave an Issue or PR if you have any ideas or suggestions for this project!
+Deep Designer converts a product idea (described in IDEA.md) into a comprehensive design document for use by coding agents. The system focuses on in-depth product design analysis and human-in-the-loop iterative refinement.
 
-Deep Designer converts a human's product idea into a detailed design for use by coding agents. The system focuses on deep product design analysis and human-in-the-loop iterative refinement.
+Deep Designer uses [Agno](https://docs.agno.com/introduction) for AI agent orchestration and is optimized to work with Anthropic's Claude models.
 
-Deep Designer uses [Agno](https://docs.agno.com/introduction) for multi-agent orchestration. Deep Designer is model agnostic.
+## Features
 
-## Agents
+- **Structured Output**: Uses Pydantic models to generate well-structured design documents
+- **Interactive Feedback**: Asks clarifying questions to improve the design
+- **Comprehensive Design**: Covers product idea, marketing, technical architecture, and UI/UX design
 
-- **Manager**: Coordinates overall design process
-- **Marketing**: Defines user personas and requirements
-- **Architect**: Designs technical architecture
-- **Designer**: Creates interface specifications
+## Structure
 
-## Workflow
+The design document covers four main sections:
 
-1. Read idea from IDEA.md
-2. Agents analyze requirements through targeted questions
-3. Human provides feedback at each iteration
-4. Final document includes implementation tasks for coding agents
+1. **Idea**: Problem definition, solution overview, audience, core and optional features
+2. **Marketing**: User personas, market analysis, and user requirements
+3. **Architecture**: Technical requirements, system design, technology stack
+4. **Design**: UI components, screens, user flows, and visual specifications
 
 ## Usage
 
 ```bash
-# Run with default IDEA.md
+# Install dependencies
+pixi install
+
+# Run with default IDEA.md in the project root
 pixi run dd
 
-# Custom idea file
-pixi run dd -i /path/to/IDEA.md
+# Validate DESIGN.json structure
+pixi run validate
 ```
 
 ## Requirements
 
-- Python 3.9+
-- Agno
-- OpenAI API key
+- Python 3.13+
+- Agno 1.4.3+
+- Anthropic API key
+
+## Getting Started
+
+1. Create an IDEA.md file in the project root with your product idea
+2. Run `pixi run dd` to generate a design document
+3. Answer the agent's questions to refine the design
+4. The final design will be saved in DESIGN.json
