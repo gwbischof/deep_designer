@@ -12,12 +12,11 @@ from utils import initialize_design_json, validate_design_json
 
 
 @tool(show_result=True)
-def ask_customer(questions: List[str], agent_name: str = "Unknown Agent") -> str:
+def ask_customer(questions: List[str]) -> str:
     """Prompts the customer with questions and collects responses.
 
     Args:
         questions: List of question strings to ask sequentially.
-        agent_name: Name of the agent using this tool.
 
     Returns:
         Formatted string with questions and responses.
@@ -25,7 +24,7 @@ def ask_customer(questions: List[str], agent_name: str = "Unknown Agent") -> str
     Note:
         Provide only ONE question in the list.
     """
-    print(f"🛠️ [ask_customer] Called by {agent_name}")
+    print("🛠️ [ask_customer] Called")
 
     if not questions:
         return "No questions provided."
@@ -35,7 +34,7 @@ def ask_customer(questions: List[str], agent_name: str = "Unknown Agent") -> str
 
     # Ask each question one at a time
     for i, question in enumerate(questions):
-        print(f"\n[{agent_name}] asks: {question}")
+        print(f"\nQuestion: {question}")
         response = questionary.text(f"{question}").ask()
 
         # Add the Q&A to the result string
@@ -48,17 +47,16 @@ def ask_customer(questions: List[str], agent_name: str = "Unknown Agent") -> str
 
 
 @tool(show_result=True)
-def read_idea_file(file_path: str, agent_name: str = "Unknown Agent") -> str:
+def read_idea_file(file_path: str) -> str:
     """Reads product idea from file and converts markdown to JSON.
 
     Args:
         file_path: Path to file (typically IDEA.md).
-        agent_name: Name of the agent using this tool.
 
     Returns:
         JSON string of markdown content or error message.
     """
-    print(f"🛠️ [read_idea_file] Called by {agent_name} to read {file_path}")
+    print(f"🛠️ [read_idea_file] Reading {file_path}")
 
     try:
         # Convert to Path object for better path handling
@@ -87,21 +85,18 @@ def read_idea_file(file_path: str, agent_name: str = "Unknown Agent") -> str:
 
 
 @tool(show_result=True)
-def get_design_json(
-    section: Optional[str] = None, agent_name: str = "Unknown Agent"
-) -> str:
+def get_design_json(section: Optional[str] = None) -> str:
     """Gets content from DESIGN.json.
 
     Args:
         section: Optional section to retrieve (idea, marketing, architecture, design, tasks).
                 If not provided, returns the entire file.
-        agent_name: Name of the agent using this tool.
 
     Returns:
         JSON string of requested content.
     """
     section_info = "entire file" if section is None else f"section '{section}'"
-    print(f"🛠️ [get_design_json] Called by {agent_name} to read {section_info}")
+    print(f"🛠️ [get_design_json] Reading {section_info}")
 
     try:
         # Validate DESIGN.json exists and is valid
@@ -137,22 +132,17 @@ def get_design_json(
 
 
 @tool(show_result=True)
-def update_design_json(
-    section: str, content: Dict[str, Any], agent_name: str = "Unknown Agent"
-) -> str:
+def update_design_json(section: str, content: Dict[str, Any]) -> str:
     """Updates a section in DESIGN.json.
 
     Args:
         section: Section to update (idea, marketing, architecture, design, tasks).
         content: JSON-compatible dict to store in the section.
-        agent_name: Name of the agent using this tool.
 
     Returns:
         Success or error message.
     """
-    print(
-        f"🛠️ [update_design_json] Called by {agent_name} to update section '{section}'"
-    )
+    print(f"🛠️ [update_design_json] Updating section '{section}'")
 
     try:
         # Validate DESIGN.json exists and is valid
