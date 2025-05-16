@@ -12,6 +12,7 @@ from agno.tools.reasoning import ReasoningTools
 
 from deep_designer.tools import ask_customer, read_idea_file, update_design_json
 from deep_designer.utils import load_prompt_text, initialize_design_json
+from models import CompleteDesignDocument
 
 
 def create_designer_agent():
@@ -34,6 +35,7 @@ def create_designer_agent():
             read_idea_file,
             update_design_json,
         ],
+        response_model=CompleteDesignDocument,
     )
     return agent
 
