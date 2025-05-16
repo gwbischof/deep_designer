@@ -6,6 +6,7 @@ from pathlib import Path
 
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
+from agno.models.anthropic import Claude
 from agno.utils.pprint import pprint_run_response
 from agno.tools.reasoning import ReasoningTools
 
@@ -24,9 +25,9 @@ def create_designer_agent():
         role="Design document creator",
         description="Transform product ideas into implementation-ready design documents",
         instructions=[instructions],
-        markdown=True,
+        show_tool_calls=True,
         add_name_to_instructions=True,
-        model=OpenAIChat(id="o3-mini"),
+        model=Claude(id="claude-3-7-sonnet-latest"),
         tools=[
             ReasoningTools(add_instructions=True),
             ask_customer,

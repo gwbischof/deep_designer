@@ -12,7 +12,7 @@ black = "black ."
 pytest = "pytest"
 deep_designer = "python deep_designer.py"
 dd = "python deep_designer.py"
-designer = "python designer.py"
+d = "python designer.py"
 validate = "python scripts/validate_design.py"
 
 [dependencies]
