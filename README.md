@@ -19,8 +19,9 @@ Deep Designer uses [Agno](https://docs.agno.com/introduction) for AI agent orche
 - Improve the UI.
 - Improve the prompt and output models.
 - Figure out if it would be helpful to add [Memory](https://docs.agno.com/agents/memory) or [Knowledge](https://docs.agno.com/agents/knowledge) 
-- Generate tasks from the design document, similar to [taskmaster](https://github.com/eyaltoledano/claude-task-master).
+- Generate tasks for coding agents from the design document, similar to [claude-task-master](https://github.com/eyaltoledano/claude-task-master).
 - Better docs.
+- I'm not sure if an MCP makes sense for this project, because there is a lot of human-in-the-loop to get from the Idea document to the Design document. If we add the feature to generate tasks, then you can just tell your coding agent to work through the tasks file.
 
 ## Structure
 
