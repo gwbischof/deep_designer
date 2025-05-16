@@ -24,6 +24,7 @@ Deep Designer uses [Agno](https://docs.agno.com/introduction) for AI agent orche
 - Try with deepseek reasoning models to reduce cost.
 - I'm not sure if an MCP makes sense for this project, because there is a lot of human-in-the-loop to get from the Idea document to the Design document. If we add the feature to generate tasks, then you can just tell your coding agent to work through the tasks file.
 - Load information with Context7 or Perplexity about the technologies used to help inform design.
+- Collabirative editing with Agent.
 
 ## Structure
 
