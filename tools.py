@@ -3,47 +3,37 @@
 import json
 import questionary
 import markdown_to_json
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any, Optional
 from pathlib import Path
 from agno.tools import tool
+from rich.prompt import Prompt
 
 # Import utils functions
 from utils import initialize_design_json, validate_design_json
 
 
 @tool(show_result=True)
-def ask_customer(questions: List[str]) -> str:
-    """Prompts the customer with questions and collects responses.
+def ask_customer(question: str) -> str:
+    """Prompts the customer with a single question and collects the response.
 
     Args:
-        questions: List of question strings to ask sequentially.
+        question: The question to ask the customer.
 
     Returns:
-        Formatted string with questions and responses.
-
-    Note:
-        Provide only ONE question in the list.
+        Formatted string with the question and response.
     """
-    print("🛠️ [ask_customer] Called")
+    print("🛠️ [ask_customer] Asking question.")
 
-    if not questions:
-        return "No questions provided."
+    if not question:
+        return "No question provided."
 
-    # Initialize an empty string to store the Q&A
-    qa_text = ""
+    response = questionary.text(f"{question}").ask()
+    #response = Prompt.ask(f"[bold] {question} [/bold]")
 
-    # Ask each question one at a time
-    for i, question in enumerate(questions):
-        print(f"\nQuestion: {question}")
-        response = questionary.text(f"{question}").ask()
+    # Format the question and response
+    qa_text = f"Question: {question}\nResponse: {response}"
 
-        # Add the Q&A to the result string
-        qa_text += f"Question: {question}\nResponse: {response}\n\n"
-
-        # Print a separator between questions (except after the last one)
-        if i < len(questions) - 1:
-            print("\n---\n")
-    return qa_text.strip()
+    return qa_text
 
 
 @tool(show_result=True)
@@ -72,7 +62,6 @@ def read_idea_file(file_path: str) -> str:
 
         # Convert markdown to JSON
         json_content = markdown_to_json.jsonify(markdown_content)
-        print("IDEA TOOL file successfully loaded")
         return json_content
     except FileNotFoundError as e:
         error_message = f"Error: {e}"

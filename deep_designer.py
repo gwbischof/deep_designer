@@ -2,6 +2,7 @@
 """Stand-alone designer agent for design document generation."""
 import os
 import argparse
+import random
 from pathlib import Path
 
 from agno.agent import Agent
@@ -15,6 +16,8 @@ from models import CompleteDesignDocument
 
 # Designer prompt embedded directly in the code
 DESIGNER_PROMPT = """First read the idea file with read_idea_file.
+
+Next ask the user a clarifying question. You can only ask one question at a time. The customer is the most valuable source of information, so ask as many questions as you need.
 
 Transform the Customer's idea into an implementation-ready design document that satisfies them.
 
@@ -32,8 +35,9 @@ def create_designer_agent():
         role="Design document creator",
         description="Transform product ideas into implementation-ready design documents",
         instructions=[DESIGNER_PROMPT],
-        show_tool_calls=True,
+        #show_tool_calls=True,
         add_name_to_instructions=True,
+        #stream_intermediate_steps=True,
         model=Claude(id="claude-3-7-sonnet-latest"),
         tools=[
             ReasoningTools(add_instructions=True),
@@ -91,18 +95,28 @@ def main():
     # Create the designer agent
     designer = create_designer_agent()
 
-    print("📝 Stand-alone Design Document Generator")
+    print("📝 Design Document Generator")
     print("======================================")
-    print(f"Using idea file: {idea_path}")
 
-    # Run the designer agent
-    response = designer.run(
-        "Create a design document based on the idea in IDEA.md",
-        show_full_reasoning=True,
-    )
+    designer.run("Help the customer create design doc")
+
+    # This doesn't wait for ask_customer response.
+    #designer.print_response(
+    #    "Create a design document based on the idea.",
+    #    stream=True,
+    #    show_full_reasoning=True,
+    #    stream_intermediate_steps=True
+    #)
+
+    # This doesnt work with ask_customer because it doesnt
+    # wait for a response.
+    #designer.cli_app(
+    #    session_id=str(random.randint(0,999)),
+    #    stream=True
+    #)
 
     # Use pprint_run_response for prettier output
-    pprint_run_response(response, markdown=True)
+    #pprint_run_response(response, markdown=True)
 
 
 if __name__ == "__main__":
