@@ -16,15 +16,16 @@ Deep Designer uses [Agno](https://docs.agno.com/introduction) for AI agent orche
 
 ## TODO
 - Support for Image input, see: https://docs.agno.com/agents/multimodal
-- Improve the UI.
 - Improve the prompt and output models.
-- Figure out if it would be helpful to add [Memory](https://docs.agno.com/agents/memory) or [Knowledge](https://docs.agno.com/agents/knowledge) 
+- Use [Memory](https://docs.agno.com/agents/memory) to allow pausing and resuming of the design process.
+- Figure out if it would be helpful to add or [Knowledge](https://docs.agno.com/agents/knowledge) 
 - Generate tasks for coding agents from the design document, similar to [claude-task-master](https://github.com/eyaltoledano/claude-task-master).
 - Better docs.
 - Try with deepseek reasoning models to reduce cost.
 - I'm not sure if an MCP makes sense for this project, because there is a lot of human-in-the-loop to get from the Idea document to the Design document. If we add the feature to generate tasks, then you can just tell your coding agent to work through the tasks file.
 - Load information with Context7 or Perplexity about the technologies used to help inform design.
-- Collabirative editing with Agent.
+- Collaborative editing with Agent.
+- Improve the UI. Agno `cli_app` doesn't work with the `ask_customer` tool, and it doesn't really do HITL.
 
 ## Structure
 
