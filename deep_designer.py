@@ -45,6 +45,7 @@ def create_designer_agent():
             read_idea_file,
             update_design_json,
         ],
+        debug_mode=True,
         response_model=CompleteDesignDocument,
     )
     return agent
